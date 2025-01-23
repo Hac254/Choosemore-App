@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { theme } from '@/styles/theme'
@@ -14,38 +14,8 @@ export default function LLMChatInterface({ onClose }: { onClose: () => void }) {
   const [messages, setMessages] = useState<Array<{ id: string; role: 'user' | 'assistant'; content: string }>>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const { explorationData, shouldInitiateChat, setShouldInitiateChat } = useTherapy()
+  const { explorationData, setShouldInitiateChat } = useTherapy()
   const [questionCount, setQuestionCount] = useState(0)
-
-  const initiateTherapistResponse = async () => {
-    const formattedExploration = Object.entries(explorationData)
-      .map(([key, value]) => `${key}: ${value}`)
-      .join('\n')
-
-    const initialMessage = {
-      id: `user-${Date.now()}`,
-      role: 'user' as const,
-      content: formattedExploration
-    }
-
-    setMessages([initialMessage])
-    setIsLoading(true)
-    setError(null)
-
-    try {
-      const response = await generateTherapistResponse([initialMessage])
-      setMessages([
-        initialMessage,
-        { id: `assistant-${Date.now()}`, role: 'assistant', content: response }
-      ])
-      setQuestionCount(1)
-    } catch (error) {
-      setError(error instanceof Error ? error.message : 'An unexpected error occurred')
-    } finally {
-      setIsLoading(false)
-      setShouldInitiateChat(false)
-    }
-  }
 
   const sendMessage = async () => {
     if (!input.trim() || isLoading) return

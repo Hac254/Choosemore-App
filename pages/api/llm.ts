@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const response = "This is a placeholder response from the LLM. Replace this with actual integration."
 
       res.status(200).json({ response })
-    } catch (error) {
+    } catch {
       res.status(500).json({ error: 'Failed to process the request' })
     }
   } else {

@@ -187,7 +187,7 @@ export default function PresentExploration({ handleExploreClick }: PresentExplor
   )
 }
 
-// Remove or use the 'AnimatePresence' variable
 // Escape the single quote
 const text = "It&apos;s a great day!";
+// Remove or use the 'text' variable
 

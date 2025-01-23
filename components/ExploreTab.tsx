@@ -15,7 +15,7 @@ function ExploreTabContent() {
   const [isChatOpen, setIsChatOpen] = useState(false)
   const { shouldInitiateChat, resetExploration, setShouldInitiateChat, setExplorationData } = useTherapy()
 
-  const handleTabChange = (value: string) => {
+  const handleTabChange = () => {
     resetExploration()
     setIsChatOpen(false)
   }
