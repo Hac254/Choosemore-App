@@ -3,8 +3,6 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     try {
-      const { messages } = req.body
-
       // Here, you would integrate with your locally hosted LLM
       // This is a placeholder response
       const response = "This is a placeholder response from the LLM. Replace this with actual integration."

@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { theme } from '@/styles/theme'
 import { AnticipatedEvent } from './types'
 import { Card } from '@/components/ui/card'
 

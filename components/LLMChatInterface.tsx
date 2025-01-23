@@ -17,12 +17,6 @@ export default function LLMChatInterface({ onClose }: { onClose: () => void }) {
   const { explorationData, shouldInitiateChat, setShouldInitiateChat } = useTherapy()
   const [questionCount, setQuestionCount] = useState(0)
 
-  useEffect(() => {
-    if (shouldInitiateChat && Object.keys(explorationData).length > 0) {
-      initiateTherapistResponse()
-    }
-  }, [shouldInitiateChat, explorationData])
-
   const initiateTherapistResponse = async () => {
     const formattedExploration = Object.entries(explorationData)
       .map(([key, value]) => `${key}: ${value}`)

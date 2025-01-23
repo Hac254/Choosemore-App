@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import PresentExploration from './PresentExploration'
@@ -12,12 +12,10 @@ import { TherapyProvider, useTherapy } from '@/contexts/TherapyContext'
 import { theme } from '@/styles/theme'
 
 function ExploreTabContent() {
-  const [selectedTab, setSelectedTab] = useState("present")
   const [isChatOpen, setIsChatOpen] = useState(false)
   const { shouldInitiateChat, resetExploration, setShouldInitiateChat, setExplorationData } = useTherapy()
 
   const handleTabChange = (value: string) => {
-    setSelectedTab(value)
     resetExploration()
     setIsChatOpen(false)
   }
