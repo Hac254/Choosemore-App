@@ -155,10 +155,11 @@ export default function FutureExploration({ handleExploreClick }: FutureExplorat
               <Button 
                 key={`future-${index}-${item.text}`}
                 variant="outline" 
-                className="w-full justify-start text-lg"
+                className="w-full justify-start text-sm sm:text-base md:text-lg p-3 min-h-[3rem] flex items-center"
                 onClick={() => setSelectedStartingPoint(item.text)}
               >
-                <span className="mr-2">{item.emoji}</span> {item.text}
+                <span className="mr-2 text-lg sm:text-xl">{item.emoji}</span>
+                <span className="line-clamp-2 text-left">{item.text}</span>
               </Button>
             ))}
           </div>

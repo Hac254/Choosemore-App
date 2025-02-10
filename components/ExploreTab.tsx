@@ -30,38 +30,49 @@ function ExploreTabContent() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 max-w-full">
       <Card className="bg-white shadow-lg">
-        <CardHeader>
-          <CardTitle style={{ color: theme.colors.primary, fontFamily: theme.fonts.heading, fontSize: theme.fontSizes.xl }}>
+        <CardHeader className="space-y-2 p-4 sm:p-6">
+          <CardTitle className="text-lg sm:text-xl md:text-2xl break-words" 
+            style={{ 
+              color: theme.colors.primary, 
+              fontFamily: theme.fonts.heading 
+            }}>
             Explore Your Journey
           </CardTitle>
-          <CardDescription style={{ color: theme.colors.text, fontSize: theme.fontSizes.sm }}>
+          <CardDescription className="text-xs sm:text-sm md:text-base break-words" 
+            style={{ 
+              color: theme.colors.text 
+            }}>
             Discover insights about your past, present, and future
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-3 sm:p-6">
           <Tabs defaultValue="present" onValueChange={handleTabChange}>
-            <TabsList className="mb-4" style={{ backgroundColor: theme.colors.gray }}>
-              <TabsTrigger value="present" className="text-sm">Present</TabsTrigger>
-              <TabsTrigger value="past" className="text-sm">Past</TabsTrigger>
-              <TabsTrigger value="future" className="text-sm">Future</TabsTrigger>
+            <TabsList className="mb-4 w-full justify-start overflow-x-auto" 
+              style={{ backgroundColor: theme.colors.gray }}>
+              <TabsTrigger value="present" className="text-xs sm:text-sm flex-1">Present</TabsTrigger>
+              <TabsTrigger value="past" className="text-xs sm:text-sm flex-1">Past</TabsTrigger>
+              <TabsTrigger value="future" className="text-xs sm:text-sm flex-1">Future</TabsTrigger>
             </TabsList>
             <AnimatePresence mode="wait">
-              <TabsContent key="present" value="present">
+              <TabsContent key="present" value="present" className="mt-2">
                 <PresentExploration handleExploreClick={handleExploreClick} />
               </TabsContent>
-              <TabsContent key="past" value="past">
+              <TabsContent key="past" value="past" className="mt-2">
                 <PastExploration handleExploreClick={handleExploreClick} />
               </TabsContent>
-              <TabsContent key="future" value="future">
+              <TabsContent key="future" value="future" className="mt-2">
                 <FutureExploration handleExploreClick={handleExploreClick} />
               </TabsContent>
             </AnimatePresence>
           </Tabs>
           {(shouldInitiateChat || isChatOpen) && (
-            <div className="mt-6">
-              <h3 className="text-lg font-semibold mb-4" style={{ color: theme.colors.primary }}>AI Therapist Chat</h3>
+            <div className="mt-4 sm:mt-6">
+              <h3 className="text-base sm:text-lg font-semibold mb-2 sm:mb-4 break-words" 
+                style={{ color: theme.colors.primary }}>
+                AI Therapist Chat
+              </h3>
               <LLMChatInterface onClose={() => setIsChatOpen(false)} />
             </div>
           )}
