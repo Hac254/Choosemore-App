@@ -21,22 +21,25 @@ export default function ResilienceTool({ onBack }: ResilienceToolProps) {
         <h2 className="text-2xl font-bold" style={{ color: theme.colors.primary }}>Resilience Tool</h2>
       </div>
 
-      <div className="flex space-x-2 mb-6">
+      <div className="flex flex-col sm:flex-row gap-2 mb-6">
         <Button 
           onClick={() => setActiveTab('schedule')} 
           variant={activeTab === 'schedule' ? 'default' : 'outline'}
+          className="w-full sm:w-auto"
         >
           Wellness Schedule
         </Button>
         <Button 
           onClick={() => setActiveTab('checks')} 
           variant={activeTab === 'checks' ? 'default' : 'outline'}
+          className="w-full sm:w-auto"
         >
           Wellness Checks
         </Button>
         <Button 
           onClick={() => setActiveTab('events')} 
           variant={activeTab === 'events' ? 'default' : 'outline'}
+          className="w-full sm:w-auto"
         >
           Anticipated Events
         </Button>
