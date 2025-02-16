@@ -18,6 +18,11 @@ const tools: Tool[] = [
     url: "https://personal-growth-tool.vercel.app/" 
   },
   { 
+    name: "Sleep Tool", 
+    emoji: "😴",
+    url: "https://sleep-tool.vercel.app/" 
+  },
+  { 
     name: "Self Management Tool", 
     emoji: "⚡",
     url: "https://self-management-model.vercel.app/" 
