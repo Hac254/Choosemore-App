@@ -53,6 +53,11 @@ const tools: Tool[] = [
     url: "https://fear-less.vercel.app/" 
   },
   { 
+    name: "Dream well, Sleep Assistant", 
+    emoji: "🛏",
+    url: "https://sweet-dreams-sigma.vercel.app/" 
+  },
+  { 
     name: "Resilience", 
     emoji: "🌱",
     component: ResilienceTool 
