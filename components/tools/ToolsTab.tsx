@@ -18,6 +18,11 @@ const tools: Tool[] = [
     url: "https://personal-growth-tool.vercel.app/" 
   },
   { 
+    name: "Attention Training Tool", 
+    emoji: "👂",
+    url: "https://attention-training-tool.vercel.app/" 
+  },
+  { 
     name: "Worry Exposure Tool", 
     emoji: "😧",
     url: "https://worry-exposure-tool.vercel.app/" 
