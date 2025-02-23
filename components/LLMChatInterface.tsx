@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { theme } from '@/styles/theme'
@@ -14,8 +14,47 @@ export default function LLMChatInterface({ onClose }: { onClose: () => void }) {
   const [messages, setMessages] = useState<Array<{ id: string; role: 'user' | 'assistant'; content: string }>>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const { explorationData, setShouldInitiateChat } = useTherapy()
+  const { explorationData } = useTherapy()
   const [questionCount, setQuestionCount] = useState(0)
+
+  // Auto-initiate chat with exploration data
+  useEffect(() => {
+    const initiateChat = async () => {
+      if (explorationData.startingPoint && Object.keys(explorationData).length > 1) {
+        const initialMessage = formatExplorationData(explorationData)
+        const newUserMessage = { 
+          id: `user-${Date.now()}`, 
+          role: 'user' as const, 
+          content: initialMessage 
+        }
+        setMessages([newUserMessage])
+        
+        try {
+          setIsLoading(true)
+          const response = await generateTherapistResponse([newUserMessage])
+          setMessages([
+            newUserMessage,
+            { id: `assistant-${Date.now()}`, role: 'assistant', content: response }
+          ])
+          setQuestionCount(prev => prev + 1)
+        } catch (error) {
+          setError(error instanceof Error ? error.message : 'An unexpected error occurred')
+        } finally {
+          setIsLoading(false)
+        }
+      }
+    }
+
+    initiateChat()
+  }, [explorationData])
+
+  const formatExplorationData = (data: Record<string, string>) => {
+    const { startingPoint, ...formData } = data
+    const formattedData = Object.entries(formData)
+      .map(([key, value]) => `${key}: ${value}`)
+      .join('\n')
+    return `Starting Point: ${startingPoint}\n${formattedData}`
+  }
 
   const sendMessage = async () => {
     if (!input.trim() || isLoading) return
@@ -53,11 +92,15 @@ export default function LLMChatInterface({ onClose }: { onClose: () => void }) {
             key={message.id}
             className={`p-3 rounded-lg ${
               message.role === 'user' 
-                ? 'ml-auto bg-accent text-white max-w-[70%]' 
+                ? 'ml-auto bg-primary text-white max-w-[70%]' 
                 : 'bg-secondary/20 max-w-[70%]'
             }`}
+            style={{
+              backgroundColor: message.role === 'user' ? theme.colors.accent : theme.colors.gray,
+              color: message.role === 'user' ? theme.colors.white : theme.colors.text
+            }}
           >
-            <p className="text-base">{message.content}</p>
+            <p className="text-base whitespace-pre-wrap">{message.content}</p>
           </div>
         ))}
         {isLoading && (

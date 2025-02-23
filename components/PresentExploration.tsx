@@ -81,7 +81,7 @@ export default function PresentExploration({ handleExploreClick }: PresentExplor
       {selectedStartingPoint === "Things that are going on for me at the moment" && (
         <>
           <div className="space-y-2">
-            <Label htmlFor="currentSituation" className="text-lg font-semibold">What's currently happening in your life?</Label>
+            <Label htmlFor="currentSituation" className="text-lg font-semibold">What&apos;s currently happening in your life?</Label>
             <Textarea 
               id="currentSituation"
               placeholder="Describe the current situations or circumstances"
@@ -187,8 +187,4 @@ export default function PresentExploration({ handleExploreClick }: PresentExplor
     </>
   )
 }
-
-// Escape the single quote
-const text = "It&apos;s a great day!";
-// Remove or use the 'text' variable
 
