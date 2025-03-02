@@ -17,6 +17,18 @@ interface Game {
 
 const games: Game[] = [
   {
+    name: "Flappy Bird",
+    emoji: "🐦",
+    description: "Test your reflexes in this classic arcade-style game",
+    url: "https://flappy-bird-game-plum.vercel.app/"
+  },
+  {
+    name: "Tetris",
+    emoji: "🎮",
+    description: "Classic block-stacking puzzle game to challenge your mind",
+    url: "https://tetris-game-seven-rouge.vercel.app/"
+  },
+  {
     name: "Mindfulness Maze",
     emoji: "🧘",
     description: "Navigate through a peaceful maze while practicing mindfulness",
