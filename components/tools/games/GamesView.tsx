@@ -17,6 +17,18 @@ interface Game {
 
 const games: Game[] = [
   {
+    name: "Memory Game",
+    emoji: "🧠",
+    description: "Challenge your memory skills by matching card pairs",
+    url: "https://memory-game-liart-mu.vercel.app/"
+  },
+  {
+    name: "Fear Fighter",
+    emoji: "🦸",
+    description: "Face and overcome your fears through interactive challenges",
+    url: "https://fear-fighter-la3b-mqi5rwcqv-odedebenjamin7-gmailcoms-projects.vercel.app/"
+  },
+  {
     name: "Flappy Bird",
     emoji: "🐦",
     description: "Test your reflexes in this classic arcade-style game",
